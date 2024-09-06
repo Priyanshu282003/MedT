@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatrics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .vertical-nav {
+            min-width: 17rem;
+            width: 17rem;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+            padding-top: 80px;
+        }
+
+        .page-content {
+            margin-left: 17rem;
+            transition: all 0.4s;
+        }
+
+        /* for toggle behavior */
+
+        #sidebar.active {
+            margin-left: -17rem;
+        }
+
+        #content.active {
+            width: 100%;
+            margin: 0;
+        }
+
+        .col-8 {
+            text-align: justify;
+            margin-left: 29%;
+            padding-top: 260%;
+        }
+        @media (max-width: 768px) {
+            #sidebar {
+                margin-left: -17rem;
+            }
+            #sidebar.active {
+                margin-left: 0;
+            }
+            #content {
+                width: 100%;
+                margin: 0;
+            }
+            #content.active {
+                margin-left: 17rem;
+                width: calc(100% - 17rem);
+            }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-image: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=900&t=st=1709404718~exp=1709405318~hmac=c2bc7121338492b34064448c232c4c465e17ba95d99800fde257d798890ee162');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            overflow-y: auto;
+            max-height: 80vh;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #ff6347; /* Red color */
+            font-size: 24px;
+            border: 2px solid #ff6347; /* Red border */
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px; /* Increased margin */
+        }
+
+        p {
+            color: #555;
+            line-height: 1.8; /* Increased line-height for better readability */
+            margin-bottom: 15px; /* Increased margin */
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 15px;
+            color: #555; /* Changed color for list items */
+        }
+
+        li {
+            margin-bottom: 8px; /* Increased margin */
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+    <nav class="navbar bg-body-tertiary fixed-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="welcome.php">MedTrack</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="history.php">History</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" href="#" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Reports
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="createReport.php">Add Report</a></li>
+                                <li><a class="dropdown-item" href="modifyReport.php">Edit Report</a></li>
+                                <li>
+                                </li>
+                                <li><a class="dropdown-item" href="deleteReport.php">Delete Report</a></li>
+                            </ul>
+                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link active dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Lab Reports
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="labReports.php">View Lab Report</a></li>
+                                <li><a class="dropdown-item" href="uploadLabReport.php">Add Lab Report</a></li>
+                                <li>
+                                </li>
+                                <li><a class="dropdown-item" href="deleteReport.php">Delete Lab Report</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="profile.php">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="logout.php" class="btn btn-danger active" role="button" aria-pressed="true">Log
+                                Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-4">
+          <nav id="navbar-example3" class="vertical-nav bg-dark flex-column align-items-stretch pe-4 border-end">
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="#introduction"><strong>Introduction</strong></a>
+              <!-- <nav class="nav nav-pills flex-column">
+                <a class="nav-link ms-3 my-1" href="#item-1-1">Item 1-1</a>
+                <a class="nav-link ms-3 my-1" href="#item-1-2">Item 1-2</a>
+              </nav> -->
+              <!-- <a class="nav-link" href="#about-heart"><strong>About Heart</strong></a> -->
+              <a class="nav-link" href="#common-conditions"><strong>Common Conditions</strong></a>
+              <nav class="nav nav-pills flex-column">
+                <a class="nav-link ms-3 my-1" href="#common-cold">Common-cold</a>
+                <a class="nav-link ms-3 my-1" href="#influenza">Influenza</a>
+                <a class="nav-link ms-3 my-1" href="#bronchiolitis">Bronchiolitis</a>
+                <a class="nav-link ms-3 my-1" href="#ear-infection">Ear Infections</a>
+                <a class="nav-link ms-3 my-1" href="#stomach-flu">Stomach Flu</a>
+                <a class="nav-link ms-3 my-1" href="#uti">Urinary Tract Infections</a>
+              </nav>
+              <a class="nav-link" href="#common-symptoms"><strong>Common Symptoms</strong></a>
+              <a class="nav-link" href="#first-aid"><strong>First Aid</strong></a>
+              <a class="nav-link" href="#post-discharge"><strong>Post-discharge care</strong></a>
+              <a class="nav-link" href="#disclaimer"><strong>Disclaimer</strong></a>
+              
+            </nav>
+          </nav>
+        </div>
+      
+        <div class="col-8">
+          <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" class="scrollspy-example-2" tabindex="0">
+            <div id="introduction">
+              <h4><strong>Introduction</strong></h4>
+              <p>The vibrant world of paediatrics revolves around the health and well-being of infants, children, and adolescents. From the delicate miracle of a newborn's first breath to the complexities of teenage growth and development, paediatricians serve as guardians, guides, and healers for this precious segment of the population. 
+                This specialized field of medicine delves deeper than simply treating childhood illnesses. Paediatricians act as partners with parents, offering comprehensive care that encompasses:
+                </p> <br>
+              <ul>
+                <li><p><Strong>Preventive Care:</Strong> Regular checkups, immunizations, and development screenings to ensure children stay healthy and on track for optimal growth.</p></li>
+                <li><p><Strong>Diagnosis and treatment of illnesses</Strong>Regular checkups, immunizations, and development screenings to ensure children stay healthy and on track for optimal growth.</p></li>
+                <li><p><Strong>management of chronic health issues: </Strong> Providing ongoing care and support for children with asthma, diabetes, allergies, and other long-term conditions.</p></li>
+                <li><p><Strong>Mental and emotional health: </Strong> Providing ongoing care and support for children with asthma, diabetes, allergies, and other long-term conditions.</p></li>
+                <li><p><Strong>Education and guidance: </Strong> Partnering with parents to provide information on nutrition, safety, healthy habits, and navigating the social and emotional challenges of childhood.</p></li>
+              </ul><br>
+              <img src="img/pediatrics-intro.png" align="center">
+              <p>Paediatricians cultivate a unique skillset that blends medical expertise with a genuine understanding of children's physical, emotional, and social needs. Their training equips them to:</p>
+              <ul>
+                <li><p><Strong>Communicate effectively with children:</Strong> Using age-appropriate language, building rapport, and creating a comfortable environment where children feel safe and heard.</p></li>
+                <li><p><Strong>Perform age-specific examinations: </Strong>Tailoring examinations to each stage of development, from gentle techniques for newborns to more interactive approaches for older children.</p></li>
+                <li><p><Strong>Interpret growth charts and development milestones: </Strong> Monitoring a child's progress to ensure they are reaching developmental benchmarks and addressing any potential concerns.</p></li>
+                <li><p><Strong>Collaborate with other healthcare professionals: </Strong> Working with specialists, nurses, therapists, and mental health professionals to provide a holistic approach to a child's care.</p></li>
+              </ul><br>
+            </div>
+            <!-- <div id="item-1-1">
+              <h5>Item 1-1</h5>
+              <p>...</p>
+            </div>
+            <div id="item-1-2">
+              <h5>Item 1-2</h5>
+              <p>...</p>
+            </div> -->
+            <div id="common-conditions">
+              <h4><strong>Common well-known illnesses and infections </strong></h4>
+              <p>Childhood illnesses and infections are a common concern for parents. With little ones exploring the world around them, they're bound to encounter germs that can lead to various ailments. While some illnesses may cause a sniffle or a cough, others can be more serious. Understanding these common conditions can help you navigate your child's health and ensure they feel better as quickly as possible.</p>
+            </div>
+            <div id="common-cold">
+              <p><strong>Common Cold: </strong> The common cold is a viral infection that takes up residence in the upper respiratory tract, making the nose and throat its battleground. This highly contagious illness spreads through tiny droplets launched by coughs and sneezes. Children in daycare or school settings are particularly susceptible as these environments are teeming with potential cold viruses.</p><br>
+              <p>The common cold typically announces its arrival with a runny or stuffy nose, a symphony of sneezes, a sore throat that makes swallowing uncomfortable, and a mild cough that can tickle or feel productive (bringing up mucus). The good news is that most healthy children's immune systems are capable warriors against the common cold, and the illness usually resolves on its own within a week. However, for some young children, the congestion can make breathing and feeding difficult, requiring extra monitoring and care.</p>
+            </div>
+            <div id="influenza">
+              <p><strong>Influenza (Flu): </strong>In contrast to the common cold, influenza, also known as the flu, is a more serious respiratory illness caused by influenza viruses. These viruses can lead to complications, making the flu a cause for concern, especially for young children, pregnant women, and older adults. Unlike the common cold, the flu often presents with a fever that can soar to 100°F (38°C) or even higher, sending shivers down your child's spine. Chills, a throbbing headache, muscle aches that make even simple movements feel like a chore, and fatigue that can leave your child feeling drained are also common flu symptoms. The cough associated with the flu can be persistent and quite bothersome, often described as a dry, hacking cough that just won't quit. A sore throat and a runny or stuffy nose can also accompany the flu, making it feel like a miserable combination of symptoms. Fortunately, a yearly flu vaccination is a powerful weapon in the fight against influenza. Getting your child vaccinated significantly reduces their risk of getting the flu and experiencing its unpleasant symptoms. </p>
+            </div>
+            <div id="bronchiolitis">
+                <p><strong>Bronchiolitis: </strong>Another respiratory infection that can cause concern, especially in infants, is bronchiolitis. This lower respiratory infection primarily affects babies under one year old and is typically caused by the respiratory syncytial virus (RSV). Unlike the upper respiratory tract targeted by the common cold, bronchiolitis attacks the lower airways, including the bronchioles (small airways in the lungs). This inflammation can cause wheezing, a high-pitched whistling sound during breathing, that can be quite alarming for parents. Along with wheezing, bronchiolitis often presents with a cough that can be wet or dry, congestion that makes breathing difficult, and a fever that can add to the baby's discomfort. Early diagnosis and treatment are crucial for bronchiolitis, as severe cases can lead to respiratory failure. </p>
+            </div>
+            <div id="ear-infection">
+                <p><strong>Ear Infections (Otitis Media): </strong>This is a bacterial or viral infection of the middle ear. It's very common in young children. Symptoms include earache, fever, fussiness, and difficulty sleeping. </p>
+            </div>
+            <div id="stomach-flu">
+                <p><strong>Stomach Flu (Gastroenteritis): </strong>This is an inflammation of the stomach and intestines caused by a virus or bacteria. Symptoms include vomiting, diarrhoea, abdominal cramps, nausea, and fever. </p>
+            </div>
+            <div id="uti">
+                <p><strong>Urinary Tract Infections (UTIs): </strong>This is a bacterial infection of the urinary tract, which includes the kidneys, ureters, bladder, and urethra. UTIs are more common in girls than boys. Symptoms may include frequent urination, burning with urination, abdominal pain, and blood in the urine. </p>
+            </div>
+
+            <div id="common-symptoms">
+                <h4><strong>Common Symptoms: </strong></h4>
+                <p>These are general symptoms that can occur with various childhood illnesses: </p>
+                <ul>
+                    <li><strong>Fever: </strong>An elevated body temperature, usually above 100.4°F (38°C) for infants and young children.</li>
+                    <li><strong>Cough: </strong>A forceful expulsion of air from the lungs, can be dry, hacking, or productive (with mucus).</li>
+                    <li><strong>Runny or stuffy nose: </strong>Discharge or congestion in the nasal passages, making breathing difficult.</li>
+                    <li><strong>Sore throat: </strong>Pain or scratchiness in the throat, making swallowing uncomfortable.</li>
+                    <li><strong>Ear ache: </strong>Pain in the ear, often described as throbbing or pulling.</li>
+                    <li><strong>Vomiting: </strong>Forceful expulsion of stomach contents.</li>
+                    <li><strong>Diarrheal: </strong>Loose and frequent stools.</li>
+                    <li><strong>Abdominal Pain: </strong>Pain in the belly, can be sharp or dull.</li>
+                    <li><strong>Fatigue: </strong>Feeling tired and lacking energy.</li>
+                    <li><strong>Fussiness: </strong>Increased irritability and crying in infants and young children.</li>
+                    <li><strong>Rash: </strong>Increased irritability and crying in infants and young children.</li>
+                </ul>
+            </div>
+            <div id="first-aid">
+                <h4><strong>First Aid and Emergency Preparedness: </strong></h4>
+                <p>Include a thermometer, pain relievers (appropriate for your child's age and weight), a bulb syringe (for infants with stuffy nose), and a vaporizer (for cough and congestion relief).</p>
+                <p>
+                    Be familiar with CPR (cardiopulmonary resuscitation) for infants and children. Know the signs of a medical emergency in a child: Trouble breathing, seizures, severe vomiting or diarrhoea, high fever unresponsive to medication (especially in infants), or inconsolable crying. Call 911 or your local emergency number immediately if you think your child is experiencing a medical emergency.
+                </p>
+            </div>
+            <div id="common-treatment-procedures">
+                <h4><strong>Common Treatment Procedures: </strong></h4>
+                <p>Treatment for childhood illnesses depends on the specific illness and its severity. Here are some common treatments:</p>
+                <ul>
+                    <li><strong>Rest and fluids: </strong>Essential for most childhood illnesses.</li>
+                    <li><strong>Over-the-counter medications: </strong>Pain relievers (like acetaminophen or ibuprofen) can help reduce fever and discomfort (follow dosage instructions carefully). Saline nasal drops or sprays can help clear congestion.</li>
+                    <li><strong>Prescription medications: </strong>Antibiotics are prescribed for bacterial infections like ear infections. Antiviral medications may be given for certain viral illnesses such as influenza. Inhaled medications (like bronchodilators) can help open airways in children with respiratory illnesses like bronchiolitis.</li>
+                </ul>
+            </div>
+            <div id="diet">
+                <h4><strong>Diet and Nutrition During Treatment: </strong></h4>
+                <ul>
+                    <li>Maintain a healthy diet for your child during illness as much as possible. Offer bland foods like toast, crackers, or bananas if your child has nausea or vomiting.</li>
+                    <li><p>Offer plenty of fluids to prevent dehydration, especially if your child has vomiting or diarrhoea. Pedialyte or similar rehydration solutions may be recommended by your paediatrician.</p></li>
+                    <li><p>Offer small, frequent meals rather than large ones, which can be overwhelming for a sick child.</p></li>
+                </ul>
+            </div>
+            <div id="post-discharge">
+                <h4><strong>Post-Discharge Care:</strong></h4>
+                <p>Follow your doctor's instructions regarding medications, rest, and activity level., Monitor your child for any new or worsening symptoms, Schedule a follow-up appointment with your doctor to ensure your child is recovering well.</p>
+            </div>
+            <div id="disclaimer">
+                <h4><strong>Disclaimer</strong></h4>
+                <p>This information is intended for general knowledge only and shouldn't be a substitute for professional medical advice. Always consult your paediatrician for diagnosis and treatment of your child's specific condition.</p>
+            </div>
+            </div>
+        </div>
+      </div>
+    
+</body>
+</html>

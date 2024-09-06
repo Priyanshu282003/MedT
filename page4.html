@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=900&t=st=1709404718~exp=1709405318~hmac=c2bc7121338492b34064448c232c4c465e17ba95d99800fde257d798890ee162');
+            background-size: cover; 
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 50px auto;
+            max-width: 600px;
+            overflow-y: auto;
+            max-height: 80vh;
+            position: relative;
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px; /* Increased margin for better separation */
+        }
+
+        p {
+            color: #555;
+            line-height: 1.8; /* Increased line-height for better readability */
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 15px;
+            color: #555; /* Changed color for list items */
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #ff6347; /* Red color */
+            font-size: 24px;
+            border: 2px solid #ff6347; /* Red border */
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="close-button" onclick="goBack()">X</span>
+        <h1>COVID-19</h1>
+
+        <h2>1. Common Well-Known Illnesses and Infections:</h2>
+        <p>COVID-19, caused by the SARS-CoV-2 virus, is a respiratory illness. It belongs to the coronavirus family, which also includes illnesses like the common cold and severe acute respiratory syndrome (SARS).</p>
+    
+        <h2>2. Common Symptoms:</h2>
+        <p>Common symptoms of COVID-19 include:</p>
+        <ul>
+            <li>Fever or chills</li>
+            <li>Cough</li>
+            <li>Shortness of breath or difficulty breathing</li>
+            <li>Fatigue</li>
+            <li>Muscle or body aches</li>
+            <li>Headache</li>
+            <li>Loss of taste or smell</li>
+            <li>Sore throat</li>
+            <li>Congestion or runny nose</li>
+            <li>Nausea or vomiting</li>
+            <li>Diarrhea</li>
+        </ul>
+    
+        <h2>3. First Aid and Emergency Preparedness:</h2>
+        <p>In case of suspected COVID-19 or worsening symptoms:</p>
+        <ul>
+            <li>Isolate the person to prevent the spread of the virus.</li>
+            <li>Encourage rest and hydration.</li>
+            <li>Seek medical advice, especially if the person experiences difficulty breathing or persistent chest pain.</li>
+        </ul>
+    
+        <h2>4. Common Treatment Procedures:</h2>
+        <p>Treatment for COVID-19 varies based on the severity of symptoms and may include:</p>
+        <ul>
+            <li>Symptomatic care: Rest, hydration, and over-the-counter medications to alleviate symptoms.</li>
+            <li>Hospitalization for severe cases, involving oxygen therapy and advanced respiratory support.</li>
+            <li>Antiviral medications, such as remdesivir, may be prescribed in some cases.</li>
+        </ul>
+    
+        <h2>5. Diet and Nutrition during Treatment:</h2>
+        <p>Maintaining good nutrition is essential during COVID-19 recovery:</p>
+        <ul>
+            <li>Stay hydrated by drinking plenty of fluids.</li>
+            <li>Consume a balanced diet rich in fruits, vegetables, lean proteins, and whole grains.</li>
+            <li>Consider nutritional supplements if appetite is reduced.</li>
+        </ul>
+    
+        <h2>6. Post Discharge Care:</h2>
+        <p>Post-COVID-19 care involves:</p>
+        <ul>
+            <li>Gradual return to normal activities based on healthcare provider guidance.</li>
+            <li>Monitoring for lingering symptoms, such as fatigue or respiratory issues.</li>
+            <li>Mental health support for those dealing with post-illness stress or anxiety.</li>
+            <li>Follow-up appointments with healthcare providers.</li>
+        </ul>
+    
+        <h2>7. Medications:</h2>
+        <p>Medications used in the treatment of COVID-19 may include:</p>
+        <ul>
+            <li>Antiviral medications like remdesivir.</li>
+            <li>Corticosteroids for severe inflammation.</li>
+            <li>Analgesics and antipyretics to reduce fever and alleviate pain.</li>
+        </ul>
+    
+        <p>It's important to note that COVID-19 treatment guidelines may evolve based on ongoing research and the emergence of new variants. Individuals should follow recommendations from healthcare professionals and public health authorities for the most up-to-date information.</p>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

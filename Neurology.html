@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulmonology</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .vertical-nav {
+            min-width: 17rem;
+            width: 17rem;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+            padding-top: 80px;
+        }
+
+        .page-content {
+            margin-left: 17rem;
+            transition: all 0.4s;
+        }
+
+        /* for toggle behavior */
+
+        #sidebar.active {
+            margin-left: -17rem;
+        }
+
+        #content.active {
+            width: 100%;
+            margin: 0;
+        }
+
+        .col-8 {
+            text-align: justify;
+            margin-left: 29%;
+            padding-top: 180%;
+        }
+        @media (max-width: 768px) {
+            #sidebar {
+                margin-left: -17rem;
+            }
+            #sidebar.active {
+                margin-left: 0;
+            }
+            #content {
+                width: 100%;
+                margin: 0;
+            }
+            #content.active {
+                margin-left: 17rem;
+                width: calc(100% - 17rem);
+            }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-image: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=900&t=st=1709404718~exp=1709405318~hmac=c2bc7121338492b34064448c232c4c465e17ba95d99800fde257d798890ee162');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            overflow-y: auto;
+            max-height: 80vh;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #ff6347; /* Red color */
+            font-size: 24px;
+            border: 2px solid #ff6347; /* Red border */
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px; /* Increased margin */
+        }
+
+        p {
+            color: #555;
+            line-height: 1.8; /* Increased line-height for better readability */
+            margin-bottom: 15px; /* Increased margin */
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 15px;
+            color: #555; /* Changed color for list items */
+        }
+
+        li {
+            margin-bottom: 8px; /* Increased margin */
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+    <nav class="navbar bg-body-tertiary fixed-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="welcome.php">MedTrack</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="history.php">History</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" href="#" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Reports
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="createReport.php">Add Report</a></li>
+                                <li><a class="dropdown-item" href="modifyReport.php">Edit Report</a></li>
+                                <li>
+                                </li>
+                                <li><a class="dropdown-item" href="deleteReport.php">Delete Report</a></li>
+                            </ul>
+                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link active dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Lab Reports
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="labReports.php">View Lab Report</a></li>
+                                <li><a class="dropdown-item" href="uploadLabReport.php">Add Lab Report</a></li>
+                                <li>
+                                </li>
+                                <li><a class="dropdown-item" href="deleteReport.php">Delete Lab Report</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="profile.php">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="logout.php" class="btn btn-danger active" role="button" aria-pressed="true">Log
+                                Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-4">
+          <nav id="navbar-example3" class="vertical-nav bg-dark flex-column align-items-stretch pe-4 border-end">
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="#introduction"><strong>Introduction</strong></a>
+              <!-- <nav class="nav nav-pills flex-column">
+                <a class="nav-link ms-3 my-1" href="#item-1-1">Item 1-1</a>
+                <a class="nav-link ms-3 my-1" href="#item-1-2">Item 1-2</a>
+              </nav> -->
+              <!-- <a class="nav-link" href="#about-heart"><strong>About Heart</strong></a> -->
+              <a class="nav-link" href="#common-conditions"><strong>Common Conditions</strong></a>
+              <nav class="nav nav-pills flex-column">
+                <a class="nav-link ms-3 my-1" href="#common-cold">Common-cold</a>
+                <a class="nav-link ms-3 my-1" href="#influenza">Influenza</a>
+                <a class="nav-link ms-3 my-1" href="#bronchiolitis">Bronchiolitis</a>
+                <a class="nav-link ms-3 my-1" href="#pneumonia">Pneumonia</a>
+                <a class="nav-link ms-3 my-1" href="#copd">Chronic Obstructive Pulmonary Disease</a>
+              </nav>
+              <a class="nav-link" href="#common-symptoms"><strong>Common Symptoms</strong></a>
+              <a class="nav-link" href="#be-prepared"><strong>Be Prepared</strong></a>
+              <a class="nav-link" href="#common-treatment-procedures"><strong>Common Treatment Procedures</strong></a>
+              <a class="nav-link" href="#disclaimer"><strong>Disclaimer</strong></a>
+              
+            </nav>
+          </nav>
+        </div>
+      
+        <div class="col-8">
+          <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" class="scrollspy-example-2" tabindex="0">
+            <div id="introduction">
+              <h4><strong>Introduction</strong></h4>
+              <p>Pulmonology, a fascinating medical specialty, takes center stage when it comes to the respiratory system, the very foundation of our existence. It's the intricate network of airways and air sacs in our lungs that allows us to breathe, and pulmonologists act as guardians, ensuring these vital organs function optimally. But what exactly does a pulmonologist do?</p>
+                <p>This introduction delves into the world of pulmonology, exploring the marvels of the respiratory system, the common ailments that can disrupt its smooth operation, and the tools pulmonologists use to diagnose and treat these conditions. By understanding these aspects, we can become better partners in safeguarding our lung health.</p>
+                <p>The intricate world of pulmonology delves into the respiratory system, the lifeline that keeps us going. From the delicate air sacs in the lungs to the complex network of airways, pulmonologists act as guardians, ensuring these vital organs function optimally. But what exactly does a pulmonologist do? Let's embark on a journey through common lung conditions, the telltale signs to watch out for, and the various treatment options available.</p><br>
+
+            <div id="common-conditions">
+              <h4><strong>Common well-known illnesses and infections </strong></h4>
+            </div>
+            <div id="common-cold">
+              <p><strong>Common Cold: </strong> This ubiquitous visitor is a viral infection that sets up camp in the upper respiratory tract (think nose and throat). A highly contagious nuisance, it spreads through coughs and sneezes, causing a symphony of sniffles, sneezes, a sore throat, and a mild cough. While uncomfortable, most healthy immune systems vanquish the common cold within a week.</p>
+            </div>
+            <div id="influenza">
+              <p><strong>Influenza (Flu): </strong>In contrast to the common cold, influenza, also known as the flu, is a more serious respiratory illness caused by influenza viruses. It can lead to complications and presents with a more formidable army of symptoms. Fever, chills, headache, muscle aches, fatigue, cough, sore throat, and a runny or stuffy nose are all telltale signs of the flu's invasion. A yearly flu vaccination is a powerful weapon in the fight against influenza, significantly reducing your risk of getting sick and experiencing its unpleasant symptoms. </p>
+            </div>
+            <div id="bronchiolitis">
+                <p><strong>Bronchiolitis: </strong>This lower respiratory infection primarily targets infants under one year old. The culprit is often the respiratory syncytial virus (RSV), which inflames the lower airways, including the bronchioles (small airways in the lungs). This inflammation leads to wheezing, a high-pitched whistling sound during breathing, that can be quite alarming for parents. Bronchiolitis often presents with a cough, congestion that makes breathing difficult, and a fever that can add to the baby's discomfort. Early diagnosis and treatment are crucial for bronchiolitis, as severe cases can lead to respiratory failure.</p>
+            </div>
+            <div id="pneumonia">
+                <p><strong>Pneumonia: </strong>This foe launches an attack on the air sacs in the lungs, causing inflammation. Bacteria, viruses, or fungi can all be responsible for this unwelcome guest. Symptoms of pneumonia include fever, cough (may produce mucus), difficulty breathing, chest pain, chills, fatigue, and rapid heartbeat. Early diagnosis and treatment with appropriate medication are essential to prevent complications from pneumonia.</p>
+            </div>
+            <div id="copd">
+                <p><strong>Chronic Obstructive Pulmonary Disease (COPD): </strong>COPD isn't a single disease, but rather a group of progressive lung diseases that make breathing difficult. The main culprits in this group are emphysema and chronic bronchitis. Symptoms include a cough with mucus (productive cough), shortness of breath, especially with activity, chest tightness, wheezing, and frequent respiratory infections. There is no cure for COPD, but treatments can help manage symptoms and improve quality of life. </p>
+            </div>
+
+            <div id="common-symptoms">
+                <h4><strong>Common Symptoms: </strong></h4>
+                <p>While coughs, sniffles, and occasional shortness of breath can be commonplace, some symptoms warrant a visit to your pulmonologist. Here are some red flags to watch out for: </p>
+                <ul>
+                    <li>A cough that lasts for more than three weeks, or a cough that produces bloody mucus</li>
+                    <li>Shortness of breath that interferes with daily activities</li>
+                    <li>Chest pain, especially if it's sharp, stabbing, or worsens with breathing or coughing</li>
+                    <li><strong>Sore throat: </strong>Pain or scratchiness in the throat, making swallowing uncomfortable.</li>
+                    <li>Wheezing, particularly if it's new or worsening</li>
+                    <li>Fever along with respiratory symptoms</li>
+                    <li>Difficulty sleeping due to breathing problems</li>
+                    <li>Blue or purple colored lips or nail beds (cyanosis)</li>
+                </ul>
+            </div>
+            <div id="be-prepared">
+                <h4><strong>Be Prepared: Taking Charge of Your Lung Health </strong></h4>
+                <p>Here are some proactive steps you can take to safeguard your respiratory health:</p>
+                <ul>
+                    <li><strong>Maintain a smoke-free environment: </strong>Avoid secondhand smoke exposure as well. This is one of the most crucial steps in preventing lung disease.</li>
+                    <li><strong>Get vaccinated: </strong>Yearly flu vaccination and pneumonia vaccination (for high-risk individuals) are essential tools in your respiratory defense arsenal.</li>
+                    <li><strong>Practice good hand hygiene: </strong>Washing your hands frequently with soap and water helps prevent the spread of germs that can cause respiratory infections.</li>
+                    <li><strong>Know the signs of a respiratory emergency: </strong>Trouble breathing, severe chest pain, wheezing, bluish coloration of the skin (cyanosis), confusion, or inability to speak are all cause for immediate medical attention. Call 911 or your local emergency number if you suspect a respiratory emergency.</li>
+                    <li><strong>Keep a well-stocked first-aid kit: </strong>Include a thermometer, pain relievers, saline nasal spray, and a humidifier (for cough and congestion relief) to help manage mild respiratory symptoms</li>
+                </ul>
+            </div>
+            <div id="common-treatment-procedures">
+                <h4><strong>Common Treatment Procedures: </strong></h4>
+                <p>Treatment for lung conditions depends on the specific illness and its severity. Here are some common treatments:</p>
+                <ul>
+                    <li><strong>Medications: </strong><ul>
+                        <li><strong>Bronchodilators: </strong>Relax muscles in the airways to ease breathing (inhaled medications).</li>
+                        <li><strong>Inhaled steroids: </strong>Reduce inflammation in the airways (inhaled medications).</li>
+                        <li><strong>Antibiotics: </strong>Treat bacterial infections like pneumonia.</li>
+                        <li><strong>Antiviral medications: </strong>For certain viral infections like influenza.</li>
+                    </ul></li>
+                    <li><strong>Oxygen therapy: </strong>Provides supplemental oxygen to improve blood oxygen levels.</li>
+                    <li><strong>Pulmonary rehabilitation: </strong>A program of exercise and education to help manage symptoms and improve quality of life (for chronic conditions like COPD).</li>
+                    <li><strong>Surgery: </strong>In some cases, surgery may be necessary to remove damaged lung tissue or treat severe lung conditions.</li>
+                </ul>
+            </div>
+            <div id="diet">
+                <h4><strong>Diet and Nutrition During Treatment: </strong></h4>
+                <ul>
+                    <li><p>Maintain a healthy diet rich in fruits, vegetables, and whole grains to support overall health and healing.</p></li>
+                    <li><p>Drink plenty of fluids to stay hydrated, especially if you have a cough or fever.</p></li>
+                    <li><p>If you have difficulty breathing, eating smaller, more frequent meals may be easier.</p></li>
+                </ul>
+            </div>
+            <div id="disclaimer">
+                <h4><strong>Disclaimer</strong></h4>
+                <p>This information is intended for general knowledge only and shouldn't be a substitute for professional medical advice. Always consult your paediatrician for diagnosis and treatment of your child's specific condition.</p>
+            </div>
+            </div>
+        </div>
+      </div>
+    
+</body>
+</html>
